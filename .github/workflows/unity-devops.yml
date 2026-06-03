@@ -1,0 +1,35 @@
+name: Unity DevOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unity-project-check:
+    name: Check Unity Project and Docker
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Unity project structure
+        run: |
+          test -d Assets
+          test -d Packages
+          test -d ProjectSettings
+          echo "Unity project structure is valid."
+
+      - name: Check Docker availability
+        run: |
+          docker --version
+          echo "Docker is available in GitHub Actions runner."
+
+      - name: Finish pipeline
+        run: |
+          echo "DevOps pipeline for Absolute Learning has completed successfully."
