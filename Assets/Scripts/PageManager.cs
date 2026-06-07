@@ -16,7 +16,7 @@ public class PageManager : MonoBehaviour
 
     [Header("Button Colors")]
     public Color activeColor = new Color(0.82f, 1f, 0.48f, 1f);
-    public Color inactiveColor = new Color(0.65f, 0.8f, 0.35f, 0.65f);
+    public Color inactiveColor = new Color(0.82f, 1f, 0.48f, 0.45f);
 
     void Start()
     {
@@ -63,14 +63,14 @@ public class PageManager : MonoBehaviour
         SetActiveButton(progressButton);
     }
 
-    private void ResetButtonColors()
+    void ResetButtonColors()
     {
         pomodoroButton.image.color = inactiveColor;
         materialsButton.image.color = inactiveColor;
         progressButton.image.color = inactiveColor;
     }
 
-    private void SetActiveButton(Button activeButton)
+    void SetActiveButton(Button activeButton)
     {
         ResetButtonColors();
         activeButton.image.color = activeColor;
